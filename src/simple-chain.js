@@ -6,10 +6,20 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default {
   getLength() {
+
+
+
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
-  addLink(/* value */) {
+  addLink(/*value*/) {
+    // let str ='';
+    // if (this.length === 0) {
+    //   str = `( ${2} )`;
+    // } else {
+    //   str = `${this}~~( ${2} )`;
+    // }
+    // return str;
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
@@ -18,10 +28,12 @@ export default {
     // remove line with error and write your code here
   },
   reverseChain() {
+    
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   finishChain() {
+    // return this;
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }

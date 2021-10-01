@@ -22,7 +22,68 @@ import { NotImplementedError } from '../extensions/index.js';
  * }
  *
  */
-export default function getDNSStats(/* domains */) {
-  throw new NotImplementedError('Not implemented');
+export default function getDNSStats(domains) {
+  const obj = {};
+  let arr = [];
+  
+  for (let i = 0; i < domains.length; i++) {
+    let word = '';
+    let fw = domains[i];
+    let prew = fw.length;
+    
+    for (let j = fw.length - 1 ; j >= 0; j--) {
+      
+      if (fw[j] === '.') {
+       
+        word = word + fw.substring(j, prew);
+        prew = j
+        
+      }
+      
+    }
+    
+    word = word + '.' + fw.substring(0, prew);
+    
+    arr.push(word);
+    
+    for (let x = 1; x < word.length; x++) {
+      if (word[x] === '.') {
+        arr.push(word.substring(0, x));
+      }
+    } 
+   
+    
+  }
+  
+  
+ function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
+}
+  
+  let w = unique(arr).sort();
+  console.log(arr);
+  
+  
+  for (let x = 0; x < w.length; x++) {
+    let count = 0;
+    for (let y = 0; y < arr.length; y++) {
+      if (w[x] === arr[y]) {
+        count++
+      }
+      
+    }
+    obj[w[x]] = count;
+  }
+ 
+  return obj
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
