@@ -20,17 +20,22 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default class VigenereCipheringMachine {
+  constructor(bul) {
+    this.bul = bul;
+  }
+
   encrypt(message, key) {
 
+if  (arguments.length != 2 || message == undefined || key == undefined){
+  throw new Error ('Incorrect arguments!');
+}
  
 
     message = message.toUpperCase();
     key = key.toUpperCase();
     console.log(key);
     
-      if  ( Object.getOwnPropertyNames(this.encrypt).length != 2){
-        throw new Error ('Incorrect arguments!');
-      }
+      
       let kf = Math.ceil(message.length / key.length);
       key = key.repeat(kf);
 
@@ -61,20 +66,29 @@ export default class VigenereCipheringMachine {
         );
       }
     }
+
+    if (this.bul == false) {
+      return result.reverse().join("");
+      
+    } else {
+      return result.join('');
+    }
   
-    return result.join('');
+    
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
   decrypt(message, key) {
 
+    if  (arguments.length != 2 || message == undefined || key == undefined){
+      throw new Error ('Incorrect arguments!');
+    }
+
     message = message.toUpperCase();
   key = key.toUpperCase();
   console.log(key);
   
-    if  ( Object.getOwnPropertyNames(this.decrypt).length != 2){
-      throw new Error ('Incorrect arguments!');
-    }
+    
     let kf = Math.ceil(message.length / key.length);
     key = key.repeat(kf);
   
@@ -108,7 +122,14 @@ export default class VigenereCipheringMachine {
     }
   }
 
-  return result.join('');
+  if (this.bul == false) {
+    return result.reverse().join("");
+    
+  } else {
+    return result.join('');
+  }
+
+  
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
